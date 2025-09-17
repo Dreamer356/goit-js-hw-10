@@ -4,17 +4,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 2</title>
+    <title>Timer</title>
+
+    <!-- Подключение стилей flatpickr и iziToast -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css" />
+
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      #datetime-picker {
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+      }
+
+      button[data-start] {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      button[data-start]:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .timer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 20px;
+      }
+
+      .timer .field {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      }
+
+      .timer .value {
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      .timer .label {
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+    </style>
     <script type="module" crossorigin src="/goit-js-hw-10/1-timer.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-D41GYZXt.css">
   </head>
   <body>
     <main>
       <div class="container">
-      <a class="back-link" href="./index.html">Go back</a>
-      <h1 class="main-title">Timer</h1>
+        <input type="text" id="datetime-picker" placeholder="Select date and time" />
+        <button type="button" data-start disabled>Start</button>
+
+        <div class="timer">
+          <div class="field">
+            <span class="value" data-days>00</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="field">
+            <span class="value" data-hours>00</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="field">
+            <span class="value" data-minutes>00</span>
+            <span class="label">Minutes</span>
+          </div>
+          <div class="field">
+            <span class="value" data-seconds>00</span>
+            <span class="label">Seconds</span>
+          </div>
+        </div>
       </div>
     </main>
+
   </body>
 </html>
