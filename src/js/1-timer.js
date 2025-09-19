@@ -1,5 +1,10 @@
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
-document.addEventListener('DOMContentLoaded', function() {
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
+document.addEventListener('DOMContentLoaded', () => {
   const datetimePicker = document.getElementById('datetime-picker');
   const startBtn = document.querySelector('[data-start]');
   const daysValue = document.querySelector('[data-days]');
@@ -9,12 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let countdownInterval = null;
   let selectedDate = null;
+
   const fp = flatpickr(datetimePicker, {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose: function(selectedDates) {
+    onClose: (selectedDates) => {
       selectedDate = selectedDates[0];
       const now = new Date();
       
@@ -45,15 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function updateTimer() {
     const now = new Date();
-    const timeDifference = selectedDate - now;
+    const diff = selectedDate - now;
     
-    if (timeDifference <= 0) {
+    if (diff <= 0) {
       clearInterval(countdownInterval);
       resetTimer();
       return;
     }
     
-    const { days, hours, minutes, seconds } = convertMs(timeDifference);
+    const { days, hours, minutes, seconds } = convertMs(diff);
     
     daysValue.textContent = addLeadingZero(days);
     hoursValue.textContent = addLeadingZero(hours);
