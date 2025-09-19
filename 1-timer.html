@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
-
-    <!-- Подключение стилей flatpickr и iziToast -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css" />
 
@@ -17,10 +15,25 @@
         text-align: center;
       }
 
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .back-link:hover {
+        color: #0056b3;
+      }
+
       #datetime-picker {
         padding: 10px;
         font-size: 16px;
         width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
       }
 
       button[data-start] {
@@ -28,11 +41,21 @@
         font-size: 16px;
         margin-left: 10px;
         cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      button[data-start]:hover:not(:disabled) {
+        background-color: #0056b3;
       }
 
       button[data-start]:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        background-color: #6c757d;
       }
 
       .timer {
@@ -52,20 +75,25 @@
       .timer .value {
         font-size: 36px;
         font-weight: bold;
+        color: #333;
       }
 
       .timer .label {
         font-size: 14px;
         text-transform: uppercase;
         margin-top: 5px;
+        color: #666;
       }
     </style>
-    <script type="module" crossorigin src="/goit-js-hw-10/1-timer.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
   </head>
   <body>
     <main>
       <div class="container">
+        <!-- Кнопка возврата -->
+        <a class="back-link" href="./index.html">Go back</a>
+
+        <h1 class="main-title">Timer</h1>
+
         <input type="text" id="datetime-picker" placeholder="Select date and time" />
         <button type="button" data-start disabled>Start</button>
 
@@ -89,6 +117,9 @@
         </div>
       </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/izitoast"></script>
 
+    <script src="./js/1-timer.js"></script>
   </body>
 </html>
